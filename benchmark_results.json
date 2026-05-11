@@ -1,0 +1,141 @@
+[
+  {
+    "query": "How does the system handle peak load?",
+    "strategy_a": [
+      {
+        "rank": 1,
+        "score": 0.5072,
+        "chunk": "Cloud infrastructure employs auto-scaling groups to dynamically adjust compute capacity in response to traffic demand. W"
+      },
+      {
+        "rank": 2,
+        "score": 0.3598,
+        "chunk": "Kubernetes schedules pods onto nodes based on resource requests and limits declared in the pod specification. The schedu"
+      },
+      {
+        "rank": 3,
+        "score": 0.3199,
+        "chunk": "Relational databases are deployed in a primary-replica topology with synchronous replication to at least one standby nod"
+      }
+    ],
+    "strategy_b": {
+      "expanded_query": "How does the system handle peak load? peak load traffic spike high concurrency auto-scaling load balancer burst capacity horizontal scaling throughput",
+      "results": [
+        {
+          "rank": 1,
+          "score": 0.7135,
+          "chunk": "Cloud infrastructure employs auto-scaling groups to dynamically adjust compute capacity in response to traffic demand. W"
+        },
+        {
+          "rank": 2,
+          "score": 0.4818,
+          "chunk": "Kubernetes schedules pods onto nodes based on resource requests and limits declared in the pod specification. The schedu"
+        },
+        {
+          "rank": 3,
+          "score": 0.4237,
+          "chunk": "Relational databases are deployed in a primary-replica topology with synchronous replication to at least one standby nod"
+        }
+      ]
+    },
+    "diff": {
+      "only_in_a": [],
+      "only_in_b": [],
+      "overlap_count": 3
+    }
+  },
+  {
+    "query": "What happens when a node fails in the cluster?",
+    "strategy_a": [
+      {
+        "rank": 1,
+        "score": 0.5866,
+        "chunk": "Distributed clusters maintain availability through heartbeat monitoring and automatic failover mechanisms. Each node bro"
+      },
+      {
+        "rank": 2,
+        "score": 0.4111,
+        "chunk": "Relational databases are deployed in a primary-replica topology with synchronous replication to at least one standby nod"
+      },
+      {
+        "rank": 3,
+        "score": 0.3293,
+        "chunk": "Kubernetes schedules pods onto nodes based on resource requests and limits declared in the pod specification. The schedu"
+      }
+    ],
+    "strategy_b": {
+      "expanded_query": "What happens when a node fails in the cluster? node failure cluster recovery heartbeat leader election replica failover availability zone pod restart",
+      "results": [
+        {
+          "rank": 1,
+          "score": 0.7246,
+          "chunk": "Distributed clusters maintain availability through heartbeat monitoring and automatic failover mechanisms. Each node bro"
+        },
+        {
+          "rank": 2,
+          "score": 0.4496,
+          "chunk": "Kubernetes schedules pods onto nodes based on resource requests and limits declared in the pod specification. The schedu"
+        },
+        {
+          "rank": 3,
+          "score": 0.4304,
+          "chunk": "Relational databases are deployed in a primary-replica topology with synchronous replication to at least one standby nod"
+        }
+      ]
+    },
+    "diff": {
+      "only_in_a": [],
+      "only_in_b": [],
+      "overlap_count": 3
+    }
+  },
+  {
+    "query": "How is data secured during transmission?",
+    "strategy_a": [
+      {
+        "rank": 1,
+        "score": 0.4178,
+        "chunk": "All data transmitted between services is encrypted using TLS 1.3, which provides forward secrecy via ephemeral Diffie-He"
+      },
+      {
+        "rank": 2,
+        "score": 0.246,
+        "chunk": "Observability is implemented across three pillars: metrics, structured logs, and distributed traces. Services emit Prome"
+      },
+      {
+        "rank": 3,
+        "score": 0.2414,
+        "chunk": "Network isolation is achieved through Virtual Private Cloud (VPC) architecture with dedicated subnets segmented by funct"
+      }
+    ],
+    "strategy_b": {
+      "expanded_query": "How is data secured during transmission? data security TLS mTLS encryption in transit certificate PKI forward secrecy mutual authentication",
+      "results": [
+        {
+          "rank": 1,
+          "score": 0.6419,
+          "chunk": "All data transmitted between services is encrypted using TLS 1.3, which provides forward secrecy via ephemeral Diffie-He"
+        },
+        {
+          "rank": 2,
+          "score": 0.2016,
+          "chunk": "Network isolation is achieved through Virtual Private Cloud (VPC) architecture with dedicated subnets segmented by funct"
+        },
+        {
+          "rank": 3,
+          "score": 0.1822,
+          "chunk": "Content Delivery Networks (CDNs) cache static and dynamic assets at geographically distributed edge nodes to minimize ro"
+        }
+      ]
+    },
+    "diff": {
+      "only_in_a": [
+        "Observability is implemented across three pillars: metrics, structured logs, and distributed traces. Services emit Prometheus-compatible metrics\u2014request count, latency histograms, and error rates\u2014scraped every 15 seconds and stored in a time-series database. Structured JSON logs include a trace ID that correlates log lines to a specific request across service boundaries. Distributed tracing using OpenTelemetry propagates span context through HTTP headers, enabling end-to-end latency attribution. Alerts fire when p99 latency exceeds SLA thresholds or error budget burn rate crosses predefined limits."
+      ],
+      "only_in_b": [
+        "Content Delivery Networks (CDNs) cache static and dynamic assets at geographically distributed edge nodes to minimize round-trip time for end users. Cache-control headers dictate TTL values, instructing edge nodes how long to serve stale content before revalidating with the origin. When a new deployment changes asset hashes, a cache purge API call propagates invalidation signals to all edge nodes within seconds. Surrogate keys group related cached objects so that a single invalidation tag can atomically purge all content associated with a specific entity, such as a user profile or product listing."
+      ],
+      "overlap_count": 2
+    }
+  }
+]
